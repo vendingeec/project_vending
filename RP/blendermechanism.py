@@ -131,9 +131,9 @@ if __name__ == "__main__":
             ser = serial.Serial('/dev/serial0', baudrate=115200, timeout=1)
             moving_steps = 1700  # Same for both 200ml and 400ml
 
-            # move_to_blend_position()
-            # blending_process(quantity)
-            #move_to_home_position()
+            move_to_blend_position()
+            blending_process(quantity)
+            move_to_home_position()
             washing_operation()
 
     except ValueError:

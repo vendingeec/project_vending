@@ -2,7 +2,7 @@ import RPi.GPIO as GPIO
 import time
 
 # Define GPIO pins for Motor 1
-MOTOR1_PUL = 2  # Pulse pin for Motor 1
+MOTOR1_PUL = 18  # Pulse pin for Motor 1
 MOTOR1_DIR = 23  # Direction pin for Motor 1
 
 # Define GPIO pins for Motor 2
@@ -38,7 +38,7 @@ def stepper_motors(steps, delay):
 
 # Test motors
 try:
-    stepper_motors(50, 0.00025)  # Move motors with the defined common direction
+    stepper_motors(200, 0.00025)  # Move motors with the defined common direction
 except Exception as e:
     print(f"Error: {e}")
 finally:

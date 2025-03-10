@@ -2,8 +2,8 @@ import RPi.GPIO as GPIO
 import time
 
 # Define GPIO pins for Motor 1
-MOTOR1_PUL = 13  # Pulse pin for Motor 1
-MOTOR1_DIR = 19  # Direction pin for Motor 1
+MOTOR1_PUL = 26  # Pulse pin for Motor 1
+MOTOR1_DIR = 21# Direction pin for Motor 1
 
 # Setup GPIO
 GPIO.setmode(GPIO.BCM)
@@ -11,7 +11,7 @@ GPIO.setup(MOTOR1_PUL, GPIO.OUT)
 GPIO.setup(MOTOR1_DIR, GPIO.OUT)
 
 # Set motor direction (Change to GPIO.LOW for reverse)
-GPIO.output(MOTOR1_DIR, GPIO.LOW)
+GPIO.output(MOTOR1_DIR, GPIO.HIGH)
 
 # Function to move the stepper motor
 def stepper_motor(steps, delay):
@@ -23,7 +23,7 @@ def stepper_motor(steps, delay):
 
 # Test motor
 try:
-    stepper_motor(2400, 0.001)  # Move motor 1
+    stepper_motor(10, 0.00025)  # Move motor 1
 except Exception as e:
     print(f"Error: {e}")
 finally:

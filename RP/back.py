@@ -23,7 +23,7 @@ GPIO.setwarnings(False)
 
 # Define GPIO Pins for Stepper Motors
 MOTOR_PINS = {
-    "horizontal_1": {"pulse": 2, "direction": 23},  # Define actual GPIO pins
+    "horizontal_1": {"pulse": 18, "direction": 23},  # Define actual GPIO pins
     "horizontal_2": {"pulse": 24, "direction": 25},
     "gantry": {"pulse": 26, "direction": 21}
 }
@@ -228,20 +228,23 @@ def process_order():
             update_gantry_status("Water Station")
 
             if cup_type == "machine":
+                update_gantry_status("Water Station")
                 # For machine cup: move to water dispensing station with specific steps
                 print("Step 3: Moving to water dispensing station for machine cup...")
                 move_stepper(MOTOR_PINS["gantry"], 10500, "reverse")
+                time.sleep(0.2)
                 move_horizontal_synchronously(
                     MOTOR_PINS["horizontal_1"], MOTOR_PINS["horizontal_2"], 7000, "reverse")
             else:
+                update_gantry_status("User Water Station")
                 # For user cup: move to water dispensing station with different steps and direction
                 print("Step 3: Moving to water dispensing station for user cup...")
                 move_three_motors_synchronously(
                     MOTOR_PINS["horizontal_1"], MOTOR_PINS["horizontal_2"], MOTOR_PINS["gantry"], 41850, 41850, 10000, "reverse")
 
             # Call the function to dispense the water after moving to the dispensing station
-            dispense_water(water_quantity)
-            
+            #dispense_water(water_quantity)
+            time.sleep(0.5)
 
             update_gantry_status(F"Flavour {flavor}")
              # Step 4: Move to powder dispensing station
@@ -259,8 +262,9 @@ def process_order():
             time.sleep(1)
 
             # Move to the blending position
-            move_to_blend_position()
             save_blender_position("blender")
+            move_to_blend_position()
+            # save_blender_position("blender")
             
 
             blending_process_with_oscillation(water_quantity)

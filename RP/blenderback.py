@@ -7,7 +7,7 @@ GPIO.setmode(GPIO.BCM)
 
 # Define motor control pins using Raspberry Pi GPIO
 MOTOR_PINS = {
-    "horizontal_1": {"pulse": 2, "direction": 23},  # Replace with actual GPIO pins
+    "horizontal_1": {"pulse": 18, "direction": 23},  # Replace with actual GPIO pins
     "horizontal_2": {"pulse": 24, "direction": 25},  # Replace with actual GPIO pins
     "gantry": {"pulse": 26, "direction": 21},        # Replace with actual GPIO pins
 }

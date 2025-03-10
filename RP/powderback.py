@@ -6,7 +6,7 @@ GPIO.setmode(GPIO.BCM)
 
 # Define motor pins using Raspberry Pi GPIO pins (no need for MCP23017 anymore)
 MOTOR_PINS = {
-    "horizontal_1": {"pulse": 2, "direction": 23},  # Use GPIO pins for horizontal motor 1
+    "horizontal_1": {"pulse": 18, "direction": 23},  # Use GPIO pins for horizontal motor 1
     "horizontal_2": {"pulse": 24, "direction": 25},  # Use GPIO pins for horizontal motor 2
     "gantry": {"pulse": 26, "direction": 21}         # Use GPIO pins for gantry motor
 }
